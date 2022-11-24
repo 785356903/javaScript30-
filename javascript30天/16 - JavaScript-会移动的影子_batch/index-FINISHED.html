@@ -1,0 +1,64 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mouse Shadow</title>
+  </head>
+  <body>
+    <div class="hero">
+      <h1 contenteditable>🔥WOAH!</h1>
+    </div>
+
+    <style>
+      html {
+        color: black;
+        font-family: sans-serif;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+      }
+
+      h1 {
+        text-shadow: 10px 10px 0 rgba(0, 0, 0, 1);
+        font-size: 100px;
+      }
+    </style>
+
+    <script>
+      const hero = document.querySelector('.hero');
+      const text = hero.querySelector('h1');
+      const walk = 500; // 500px 标尺
+      function shadow(e) {
+        const { offsetWidth: width, offsetHeight: height } = hero; // 获取元素的宽高
+        let { offsetX: x, offsetY: y } = e; // 获取当前元素的x,y轴的偏移量
+
+        if (this !== e.target) {
+          x = x + e.target.offsetLeft; // 目标元素+目标元素的偏移量
+          y = y + e.target.offsetTop;
+        }
+        // console.log(x, y);
+        // (x / width) 移动的幅度大小
+        // walk 自己设置的标尺 扩大移动的幅度
+        // - walk / 2 是为了将中心设置为中点
+        const xWalk = Math.round((x / width) * walk - walk / 2);
+        const yWalk = Math.round((y / height) * walk - walk / 2);
+        text.style.textShadow =`
+        ${xWalk}px ${yWalk}px 0 rgba(255,0,255,0.7)
+        `
+      }
+
+      hero.addEventListener('mousemove', shadow);
+    </script>
+  </body>
+</html>

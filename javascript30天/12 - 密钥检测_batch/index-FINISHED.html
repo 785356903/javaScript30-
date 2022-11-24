@@ -1,0 +1,33 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Key Detection</title>
+    <script
+      type="text/javascript"
+      src="https://www.cornify.com/js/cornify.js"></script>
+  </head>
+  <body>
+    <script>
+      const pressed = [];
+      const secretCode = 'happy'; // 自定义密钥
+
+      window.addEventListener('keyup', e => {
+        console.log(e.key);
+        pressed.push(e.key);
+        // 只保留与密钥相等的长度
+        // -secretCode.length - 1(开始位置)
+        // pressed.length - secretCode.length(截取数量)  pressed超长时才开始截取
+        // console.log(-secretCode.length - 1, pressed.length, secretCode.length);
+        pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+        if (pressed.join('').includes(secretCode)) {
+          console.log('DING DING!');
+          cornify_add();
+        }
+        console.log(pressed);
+      });
+    </script>
+  </body>
+</html>

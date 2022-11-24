@@ -1,0 +1,77 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Understanding JavaScript's Capture</title>
+  </head>
+  <body class="bod">
+    <div class="one">
+      <div class="two">
+        <div class="three"></div>
+      </div>
+    </div>
+
+    <style>
+      html {
+        box-sizing: border-box;
+      }
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      div {
+        width: 100%;
+        padding: 100px;
+      }
+
+      .one {
+        background: thistle;
+      }
+
+      .two {
+        background: mistyrose;
+      }
+
+      .three {
+        background: coral;
+      }
+    </style>
+
+    <button></button>
+    <script>
+      const divs = document.querySelectorAll('div');
+      const button = document.querySelector('button');
+
+      function log(e) {
+        // 阻止冒泡
+        e.stopPropagation(); //
+        // 从内而外,自下而上的叫做冒泡事件
+        console.log(this);
+      }
+      divs.forEach(div =>
+        button.addEventListener('click', log, {
+          capture: false, // 实践捕获,由外而内,自上而下
+          once: true, // 触发一次
+        })
+      );
+
+      button.addEventListener(
+        'click',
+        () => {
+          console.log('Click!!!');
+        },
+        {
+          once: true,
+        }
+      );
+
+      // 事件冒泡和捕获，是指事件在元素上被触发的顺序。事件本身并不会传递
+      // 事件的执行，必须有相应的动作来触发，触发的动作不会传递
+    </script>
+  </body>
+</html>

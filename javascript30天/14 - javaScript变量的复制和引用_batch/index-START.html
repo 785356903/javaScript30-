@@ -1,0 +1,55 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JS Reference VS Copy</title>
+  </head>
+  <body>
+    <script>
+      // start with strings, numbers and booleans(从字符串、数字和布尔值开始)
+
+      // Let's say we have an array(假设我们有一个数组)
+
+      // and we want to make a copy of it.(我们想复制一份)
+
+      // You might think we can just do something like this:(你可能认为我们可以这样做：)
+
+      // however what happens when we update that array?(然而，当我们更新该数组时会发生什么？)
+
+      // now here is the problem!(现在问题来了！)
+
+      // oh no - we have edited the original array too!(哦，不，我们也编辑了原始数组！)
+
+      // Why? It's because that is an array reference, not an array copy. They both point to the same array!
+      // (为什么？这是因为这是一个数组引用，而不是数组副本。它们都指向同一个数组！)
+
+      // So, how do we fix this? We take a copy instead!(那么，我们如何解决这个问题？我们取而代之的是一份副本！)
+
+      // one way(单向)
+
+      // or create a new array and concat the old one in(或创建一个新数组并在中连接旧数组)
+
+
+      // or use the new ES6 Spread(或使用新的ES6排列)
+
+      // now when we update it, the original one isn't changed(现在，当我们更新它时，原来的没有改变)
+
+      // The same thing goes for objects, let's say we have a person object(对象也是如此，假设我们有一个人对象)
+
+      // with Objects(使用对象)
+
+      // and think we make a copy:(并认为我们复制了一份：)
+
+      // how do we take a copy instead?(我们如何取而代之？)
+
+      // We will hopefully soon see the object ...spread(我们有望很快看到物体……扩散)
+
+      // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+      // (需要注意的是，数组和对象的深度都只有1级。lodash有一个cloneDeep方法，但在使用它之前应该三思而后行。)
+
+
+    </script>
+  </body>
+</html>
